@@ -15,10 +15,10 @@ class randomLine {
 	constructor() {
 		let X = random(0,windowWidth *1.6);
 		let Y = random(0 + (0.25 * windowHeight),windowHeight - (0.25 * windowHeight));
-		let Length = random(50,windowWidth -50);
+		let Length = random(50,windowWidth -20);
 		let Thickness = random(1,11);
 //		let Speed = random(5,60);
-		let Speed = map(Thickness, 1, 10, 60, 7);
+		let Speed = map(Thickness, 1, 10, 20, 15);
 		
 		if (abs(X-Length) < 20) {
 			Length = X + 20;
