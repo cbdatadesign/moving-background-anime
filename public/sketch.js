@@ -32,7 +32,7 @@ function mouseClicked() {
 
 function draw () {
 //	counter = 0;
-	background(345,25,20);
+	background(345,15,25);
 	
 	// sort lines so that they're drawn with thinner lines on top
 	rLines.sort((a, b) => a.Diameter - b.Diameter);
