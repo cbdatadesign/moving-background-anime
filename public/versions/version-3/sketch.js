@@ -5,22 +5,14 @@ function setup () {
 	colorMode(HSB, 360, 100, 100, 100);
 	ellipseMode(RADIUS);
 	createCanvas(windowWidth,windowHeight);
-	for (let i=0; i < 80; i ++) {
-		if (i == 19) {
-			rLines.push(new star(true));
-		}
-		
+	for (let i=0; i < 20; i ++) {
 		if (i % 2 == 0) {
 			rLines.push(new randomCircle(true));
 		}
-	} 
-	for (let i=0; i < 30; i ++) {
 		if (i % 3 == 0) {
 			rLines.push(new fastestCircle(true));
 		}
-	}
-	for (let i=0; i < 50; i ++) {
-		if (i % 4 == 0) {
+		else {
 			rLines.push(new fastCircle(true));
 		}
 	}
@@ -32,7 +24,7 @@ function mouseClicked() {
 
 function draw () {
 //	counter = 0;
-	background(345,25,20);
+	background(30);
 	
 	// sort lines so that they're drawn with thinner lines on top
 	rLines.sort((a, b) => a.Diameter - b.Diameter);
@@ -51,9 +43,6 @@ function draw () {
 			}
 			else if (rLines[i].constructor.name == "fastestCircle") {
 				rLines[i] = new fastestCircle(false);
-			}
-			else if (rLines[i].constructor.name == "star") {
-				rLines[i] = new star(false);
 			}
 
     	}

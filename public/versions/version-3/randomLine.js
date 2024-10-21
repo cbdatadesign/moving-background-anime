@@ -1,5 +1,5 @@
 var colors = [
-  [330,100,50,70],
+  [330,100,0,70],
   [137,140,139,150],
   [214,251,61,80],
   [64,0,54,120],
@@ -16,7 +16,7 @@ class randomCircle {
 		let minX = isInit ? 0 : windowWidth; // check if isInit is true (starting onscreen) or false (starting offscreen): if true, return 0, if false return windowWidth (ternary operator);
 		let X = random(minX,windowWidth *1.6);
 		let Y = random(0 + (0.25 * windowHeight),windowHeight - (0.25 * windowHeight));
-		let Diameter = random(15,25);
+		let Diameter = 100;  //random(15,25);
 		let Thickness = random(3,5);
 //		let Speed = random(5,60);
 		let Speed = map(Thickness, 1, 10, 2, 1);
@@ -81,32 +81,6 @@ class fastestCircle extends randomCircle {
 	constructor(isInit) {
 		super(isInit);
 		this.Speed = map(this.Thickness, 1, 10, 8, 7);
-		this.Diameter = random(255,55);
-	}
-}
-
-class star extends randomCircle {
-	constructor(isInit) {
-		super(isInit);
-	}
-	
-	makeCircle() {
-		drawingContext.shadowBlur = 13;
-		drawingContext.shadowColor = color(225,225,225);
-		// rect(width/2,height/2, 300,300,30);
-		ellipse(width/2,height/2,20,20);
-		ellipse(width/2,height/2,5,300);
-		ellipse(width/2,height/2,200,5);
-
-		drawingContext.shadowBlur = 13;
-		drawingContext.shadowColor = color(225,225,225);
-		// rect(width/2,height/2, 300,300,30);
-		ellipse(width/2,height/2,20,20);
-		ellipse(width/2,height/2,5,300);
-		ellipse(width/2,height/2,200,5);
-	}
-	
-	moveCircle() {
-		
+		this.Diameter = random(195,55);
 	}
 }
