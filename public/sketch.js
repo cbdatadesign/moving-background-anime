@@ -1,28 +1,26 @@
-
 let rLines = [];
 
 function setup () {
 	colorMode(HSB, 360, 100, 100, 100);
+	angleMode(DEGREES);
 	ellipseMode(RADIUS);
-	createCanvas(windowWidth,windowHeight);
-	for (let i=0; i < 80; i ++) {
-		if (i == 19) {
-			rLines.push(new star(true));
-		}
-		
-		if (i % 2 == 0) {
-			rLines.push(new randomCircle(true));
-		}
+	
+	createCanvas(windowWidth, windowHeight);
+	
+	for (let i=0; i < 50; i++) {
+		rLines.push(new randomCircle(true));
 	} 
-	for (let i=0; i < 30; i ++) {
-		if (i % 3 == 0) {
-			rLines.push(new fastestCircle(true));
-		}
+	for (let i=0; i < 15; i++) {
+		rLines.push(new fastestCircle(true));
 	}
-	for (let i=0; i < 50; i ++) {
-		if (i % 4 == 0) {
-			rLines.push(new fastCircle(true));
-		}
+	for (let i=0; i < 8; i++) {
+		rLines.push(new fastCircle(true));
+	}
+	for (let i=0; i < 3; i++) {
+		rLines.push(new extraFastestCircle(true));
+	}
+	for (let i=0; i < 7; i++) {
+		rLines.push(new star(true));
 	}
 }
 
@@ -55,7 +53,9 @@ function draw () {
 			else if (rLines[i].constructor.name == "star") {
 				rLines[i] = new star(false);
 			}
-
+			else if (rLines[i].constructor.name == "extraFastestCircle") {
+				rLines[i] = new extraFastestCircle(false);
+			}
     	}
 	}
 	// add img here:
