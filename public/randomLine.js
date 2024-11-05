@@ -30,7 +30,9 @@ class randomCircle {
 		
 		this.hsb = random(colors);
 		this.color = color(this.hsb);  // this.color = a new P5 Color with a random value from the 'colors' array;
-		this.color.setAlpha(100);
+		this.alpha = 100;
+		this.color.setAlpha(this.alpha);
+		this.alphaOffset = random(0,360);
 		
 //		let Thickness = random(3,5);
 //		if (abs(X-Length) < 25) {
@@ -40,13 +42,13 @@ class randomCircle {
 	
 	drawGradient() {
 		let myGradient = drawingContext.createRadialGradient(this.X, this.Y, 0, this.X, this.Y, this.Radius);
-		this.color.setAlpha(100);
+		this.color.setAlpha(this.alpha);
 		myGradient.addColorStop(0, this.color);
-		this.color.setAlpha(50);
+		this.color.setAlpha(this.alpha * 0.5);
 		myGradient.addColorStop(0.5, this.color);
 		this.color.setAlpha(0);
 		myGradient.addColorStop(1, this.color);
-		this.color.setAlpha(100);
+		this.color.setAlpha(this.alpha);
 		drawingContext.fillStyle = myGradient;
 		drawingContext.strokeStyle = 'rgba(0, 0, 0, 0)';
 		drawingContext.shadowBlur = 93;
@@ -54,6 +56,11 @@ class randomCircle {
 		ellipse(this.X, this.Y, this.Radius);
 	}
 	
+	fadeInOut() {
+		let angle = (frameCount + this.alphaOffset) * 2;
+		this.alpha = map(sin(angle), -1,1,0,100);
+		this.color.setAlpha(this.alpha);
+	}
 	makeCircle() {
 		push();
 //		strokeWeight(this.Thickness)
@@ -99,13 +106,13 @@ class star extends randomCircle {
 	
 	drawGradient() {
 		let myGradient = drawingContext.createRadialGradient(0, 0, 0, 0, 0, this.Radius);
-		this.color.setAlpha(100);
+		this.color.setAlpha(this.alpha);
 		myGradient.addColorStop(0, this.color);
-		this.color.setAlpha(50);
+		this.color.setAlpha(this.alpha * 0.5);
 		myGradient.addColorStop(0.5, this.color);
 		this.color.setAlpha(0);
 		myGradient.addColorStop(1, this.color);
-		this.color.setAlpha(100);
+		this.color.setAlpha(this.alpha);
 		drawingContext.fillStyle = myGradient;
 		drawingContext.strokeStyle = 'rgba(0, 0, 0, 0)';
 		ellipse(0, 0, this.Radius);
@@ -116,6 +123,7 @@ class star extends randomCircle {
 		translate(this.X, this.Y);
 		rotate(this.Angle);
 		noStroke();
+		this.fadeInOut();
 		drawingContext.shadowBlur = 36;
 		drawingContext.shadowColor = this.color;
 		// rect(width/2,height/2, 300,300,30);
